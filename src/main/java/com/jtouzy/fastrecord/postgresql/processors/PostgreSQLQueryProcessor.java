@@ -25,7 +25,9 @@ public class PostgreSQLQueryProcessor<T> extends DefaultQueryProcessor<T> {
         return new PostgreSQLDefaultQueryExpression(
                 new DefaultQueryTargetExpressionWrapper(
                         firstEntityDescriptorAlias,
-                        new DefaultSimpleTableExpression(getEntityDescriptor().getTableName())));
+                        new DefaultSimpleTableExpression(
+                                getEntityDescriptor().getSchemaName(),
+                                getEntityDescriptor().getTableName())));
     }
 
     public void limit(Integer limit) {
